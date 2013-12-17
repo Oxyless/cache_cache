@@ -1,6 +1,6 @@
 module Rails
 
-  # CacheCache allow you to manage dynamically multiple group of HTML5 manifest.
+  # CacheCache allow you to manage dynamically multiple groups of HTML5 manifests.
   # CacheCache use rails cache to store generated manifests.
   #
   class CacheCache
