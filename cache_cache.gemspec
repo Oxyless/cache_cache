@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'cache_cache'
-  s.version     = '1.0.0'
+  s.version     = '1.0.1'
   s.date        = '2013-12-17'
   s.summary     = "Dynamic HTML5 manifests generator"
   s.description = "CacheCache allow you to manage dynamically multiple groups of HTML5 manifests using rails cache."
