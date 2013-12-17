@@ -15,7 +15,13 @@ module Rails
       @network = { }
       @fallback = { }
 
-      instance_eval(&block) if block_given?
+      self.configure(&block) if block_given?
+    end
+
+    # Configure
+    #
+    def configure(&block)
+      instance_eval(&block)
     end
 
     # Get / Set an entry into the cache section of the manifest
