@@ -8,14 +8,14 @@ module Rails
     # Constructor
     #
     def initialize(options = {}, &block)
-      @memory_store = options.fetch(:memory_store, ActiveSupport::Cache::MemoryStore.new) 
+      @memory_store = options.fetch(:memory_store, (ActiveSupport::Cache::MemoryStore.new rescue nil))
       @group = options.fetch(:group, :default)
 
       @cache = { }
       @network = { }
       @fallback = { }
 
-      self.configure(&block) if block_given?
+      self.configure(&block) if block_given? and not self.cached
     end
 
     # Configure
@@ -32,7 +32,7 @@ module Rails
         @cache[@group] << entry
       end
 
-      @cache[@group]
+      @cache[@group].flatten
     end
 
     # Get / Set an entry into the network section of the manifest
@@ -43,7 +43,7 @@ module Rails
         @network[@group] << entry
       end
 
-      @network[@group]
+      @network[@group].flatten
     end
 
     # Get / Set an entry into the fallback section of the manifest
@@ -54,19 +54,25 @@ module Rails
         @fallback[@group] << entry
       end
 
-      @fallback[@group]
+      @fallback[@group].flatten
     end
 
     # Save the current manifest
     #
     def save
-      @memory_store.write(self.label, self.manifest)
+      @memory_store.write(self.label, self.manifest) rescue nil
     end
 
     # Get the manifest
     #
     def manifest
-      return (@memory_store.read(self.label) or self.generate)
+      return (self.cached or self.generate)
+    end
+
+    # Get the manifest from cache ifp
+    #
+    def cached
+       @memory_store.read(self.label) rescue nil
     end
 
     # Generate the manifest
