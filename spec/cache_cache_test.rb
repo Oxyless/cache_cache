@@ -14,6 +14,11 @@ describe Rails::CacheCache do
     @cc.group.should == :custom
   end
 
+  it 'test cache function with an empty entry' do
+    @cc.cache
+    @cc.cache.should == [  ]
+  end
+
   it 'test cache function with an string entry' do
     @cc.cache('/index.html')
     @cc.cache.should == [ "/index.html" ]
@@ -25,6 +30,11 @@ describe Rails::CacheCache do
     @cc.cache.should == [ "/index.html", '/product.html', '/contact.html', '/about.html' ]
   end
 
+  it 'test network function with an empty entry' do
+    @cc.network
+    @cc.network.should == [  ]
+  end
+
   it 'test network function with an string entry' do
     @cc.network('*')
     @cc.network.should == [ "*" ]
@@ -34,6 +44,11 @@ describe Rails::CacheCache do
     @cc.network(['/index.html', '/product.html'])
     @cc.network(['/contact.html', '/about.html'])
     @cc.network.should == [ "/index.html", '/product.html', '/contact.html', '/about.html' ]
+  end
+
+  it 'test fallback function with an empty entry' do
+    @cc.fallback
+    @cc.fallback.should == [  ]
   end
 
   it 'test fallback function with an string entry' do

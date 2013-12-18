@@ -13,6 +13,7 @@ CacheCache allow you to manage dynamically multiple groups of HTML5 manifests us
      cache ActionController::Base.helpers.asset_path("application.css")  
      cache ActionController::Base.helpers.asset_path("application.js")  
      network "*"  
+     fallback "/error.html"  
      save  
     end
 
@@ -27,7 +28,8 @@ Display
     /assets/application.js
     NETWORK:
     *
-    FALLBACK:
+    FALLBACK:  
+    /error.html
 
 # Hint #
 

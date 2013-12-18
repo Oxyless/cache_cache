@@ -27,19 +27,21 @@ module Rails
     # Get / Set an entry into the cache section of the manifest
     #
     def cache(entry = nil)
+      @cache[@group] ||= []
+
       unless entry.nil?
-        @cache[@group] ||= []
         @cache[@group] << entry
       end
 
-      @cache[@group].flatten
+       @cache[@group].flatten
     end
 
     # Get / Set an entry into the network section of the manifest
     #
     def network(entry = nil)
+      @network[@group] ||= []
+
       unless entry.nil?
-        @network[@group] ||= []
         @network[@group] << entry
       end
 
@@ -49,8 +51,9 @@ module Rails
     # Get / Set an entry into the fallback section of the manifest
     #
     def fallback(entry = nil)
+      @fallback[@group] ||= []
+
       unless entry.nil?
-        @fallback[@group] ||= []
         @fallback[@group] << entry
       end
 
