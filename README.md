@@ -14,7 +14,6 @@ CacheCache allow you to manage dynamically multiple groups of HTML5 manifests.
      cache ActionController::Base.helpers.asset_path("application.js")  
      network "*"  
      fallback "/error.html"  
-     save  
     end
 
     print cache_cache.manifest 
