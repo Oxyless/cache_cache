@@ -1,7 +1,7 @@
 cache_cache
 ===========
 
-CacheCache allow you to manage dynamically multiple groups of HTML5 manifests.
+CacheCache allow you to generate HTML5 manifests.
 
 # Installation #
 
