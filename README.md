@@ -9,7 +9,7 @@ CacheCache allow you to generate HTML5 manifests.
 
 # Basic usage #
 
-    cache_cache = Rails::CacheCache.new(:group => :my_group) do
+    cache_cache = Rails::CacheCache.new() do
      cache ActionController::Base.helpers.asset_path("application.css")  
      cache ActionController::Base.helpers.asset_path("application.js")  
      network "*"  
