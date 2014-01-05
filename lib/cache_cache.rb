@@ -105,18 +105,6 @@ module Rails
       @seed
     end
 
-    # Get label
-    #
-    def label
-      "cache_cache_#{@group}"
-    end
-
-    # Get label seed
-    #
-    def label_seed
-      "cache_cache_seed_#{@group}"
-    end
-
     # Get the manifest
     #
     def to_s
